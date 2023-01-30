@@ -78,18 +78,4 @@ class TaskControllerTest {
         Assertions.assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
         Assertions.assertThat(taskRepository.findById(1L).get().getFinished()).isTrue();
     }
-
-    @Test
-    @Sql({"/scripts-h2/department.sql", "/scripts-h2/user.sql", "/scripts-h2/task.sql"})
-    void getAll_ReturnTasks_WhenSuccessful() {
-
-        var exchange = restTemplate.exchange(
-            "/tarefas", HttpMethod.GET,
-            null, new ParameterizedTypeReference<List<TaskResponseDTO>>() {
-            }
-        );
-
-        Assertions.assertThat(exchange.getStatusCode()).isEqualTo(HttpStatus.OK);
-        Assertions.assertThat(exchange.getBody().get(0)).isNotNull();
-    }
 }

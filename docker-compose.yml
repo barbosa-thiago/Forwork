@@ -1,4 +1,10 @@
 version: '3.4'
+
+x-database-environment: &database-environment
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/forwork
+  SPRING_DATASOURCE_PASSWORD: postgres
+  SPRING_DATASOURCE_USER: postgres
+
 services:
   postgres:
     image: postgres
@@ -9,6 +15,16 @@ services:
       - "5432:5432"
     volumes:
       - forwork_volume:/var/lib/postgresql/data/
+
+  valhalla-access-control:
+    image: registry.hub.docker.com/barbosathiago/forwork.jar:latest
+    ports:
+      - "8080:8080"
+    environment:
+      <<: *database-environment
+    depends_on:
+      - postgres
+    restart: on-failure
 
 volumes:
   forwork_volume:

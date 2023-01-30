@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package
 
 FROM openjdk:17-jdk-alpine
-COPY --from=build target/reinvest.jar app.jar
+COPY --from=build target/forwork.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,0 +1,1 @@
+merge into fwk_department (id, name) values (1, 'Tecnico');

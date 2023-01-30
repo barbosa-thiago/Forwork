@@ -1,10 +1,7 @@
 package com.thiago.forwork.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
@@ -31,7 +28,8 @@ public class Task extends BaseModel {
     private Long timeSpentInSeconds;
 
     @Column(name = "finished")
-    private Boolean finished;
+    @Builder.Default
+    private Boolean finished = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department")

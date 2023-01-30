@@ -1,6 +1,6 @@
 package com.thiago.forwork.mapper;
 
-import com.thiago.forwork.dto.department.DepartmentResponseDTO;
+import com.thiago.forwork.dto.department.DepartmentResponseFullDTO;
 import com.thiago.forwork.model.Department;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
@@ -14,9 +14,9 @@ import java.util.List;
 public interface DepartmentMapper {
     DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class);
 
-    DepartmentResponseDTO departmentToDepartmentResponseDTO(Department department);
+    DepartmentResponseFullDTO departmentToDepartmentResponseDTO(Department department);
 
-    @IterableMapping(elementTargetType = DepartmentResponseDTO)
-    List<DepartmentResponseDTO> departmentsToDepartmentResponseDTOs(List<Department> departments);
+    @IterableMapping(elementTargetType = DepartmentResponseFullDTO.class)
+    List<DepartmentResponseFullDTO> departmentsToDepartmentResponseDTOs(List<Department> departments);
 
 }

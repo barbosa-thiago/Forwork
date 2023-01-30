@@ -1,7 +1,7 @@
 package com.thiago.forwork.dto.task;
 
-import com.thiago.forwork.dto.department.DepartmentResponseDTO;
-import com.thiago.forwork.dto.user.UserResponseDTO;
+import com.thiago.forwork.dto.department.DepartmentDTO;
+import com.thiago.forwork.dto.user.UserDTO;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public record TaskResponseDTO(
     String title,
     String description,
     LocalDate deadline,
-    DepartmentResponseDTO department,
-    UserResponseDTO user,
+    DepartmentDTO department,
+    UserDTO asignee,
     Boolean finished
 ){}

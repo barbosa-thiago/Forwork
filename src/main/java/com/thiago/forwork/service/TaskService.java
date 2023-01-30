@@ -41,7 +41,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task asignUser(Long userId, Long taskId) {
+    public Task asignUser(Long taskId, Long userId) {
         var task = getByID(taskId);
         var user = userService.getByID(userId);
 

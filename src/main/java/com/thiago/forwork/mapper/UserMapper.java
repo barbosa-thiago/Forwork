@@ -1,6 +1,6 @@
 package com.thiago.forwork.mapper;
 
-import com.thiago.forwork.dto.user.UserResponseDTO;
+import com.thiago.forwork.dto.user.UserResponseFullDTO;
 import com.thiago.forwork.dto.user.UserSaveDTO;
 import com.thiago.forwork.dto.user.UserTimeResponseDTO;
 import com.thiago.forwork.dto.user.UserUpdateDTO;
@@ -14,21 +14,21 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = TaskMapper.class)
+@Mapper(componentModel = "spring", uses = {TaskMapper.class, DepartmentMapper.class})
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     @Mapping(source = "department", target = "department.id")
     User userSaveDTOToUser(UserSaveDTO userSaveDTO);
 
-    UserResponseDTO userToUserResponseDTO(User user);
+    UserResponseFullDTO userToUserResponseDTO(User user);
 
     UserTimeResponseDTO userToUserTimeResponseDTO(User user);
 
     @IterableMapping(elementTargetType = User.class)
-    List<UserResponseDTO> usersToUserResponseDTOs(List<User> users);
+    List<UserResponseFullDTO> usersToUserResponseDTOs(List<User> users);
 
-    default Page<UserResponseDTO> usersToUserResponseDTOs(Page<User> users) {
+    default Page<UserResponseFullDTO> usersToUserResponseDTOs(Page<User> users) {
         return users.map(this::userToUserResponseDTO);
     }
 

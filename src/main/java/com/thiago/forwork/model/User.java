@@ -15,13 +15,17 @@ import java.util.Set;
 @Setter
 @Getter
 @Table(name = "fwk_user")
+@NamedEntityGraph(name = "user.department", includeAllAttributes = true, attributeNodes = {
+    @NamedAttributeNode(value = "department")})
 public class User extends BaseModel {
 
     @Column(name = "name")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id")
+    @JoinTable(name = "fwk_department_user",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "department_id"))
     private Department department;
 
     @OneToMany(mappedBy = "asignee", fetch = FetchType.LAZY)

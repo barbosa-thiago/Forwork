@@ -16,13 +16,5 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-
-//         stage("Build Docker Image") {
-//             steps {
-//                 script {
-//                     dockerapp = docker.build("barbosathiago/thymeleaf-example", '-f ./Dockerfile ./')
-//                 }
-//             }
-//         }
     }
 }

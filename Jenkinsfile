@@ -22,6 +22,7 @@ pipeline {
                         aws ec2 cp ./target/forwork.jar ec2-user@ec2-3-95-217-58.compute-1.amazonaws.com:~/
                         ssh ec2-user@ec2-3-95-217-58.compute-1.amazonaws.com 'java -jar ~/forwork.jar'
                     '''
+                }
             }
         }
     }

@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Deploy to EC2') {
             steps {
-                withCredentials([awsAccessKey(credentialsId: 'jenkins-aws', variable: 'AWS_ACCESS_KEY_ID'), awsSecretKey(credentialsId: 'jenkins-aws', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'jenkins-aws']]) {
                     sh '''
                         export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
                         export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY

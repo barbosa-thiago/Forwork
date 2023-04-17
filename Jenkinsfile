@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        FORWORK_USER = 'params.FORWORK_USER'
-        FORWORK_HOST = 'params.FORWORK_HOST'
-        S3_BUCKET = 'params.S3_BUCKET'
+        FORWORK_USER = '${params.FORWORK_USER}'
+        FORWORK_HOST = '${params.FORWORK_HOST}'
+        S3_BUCKET = '${params.S3_BUCKET}'
     }
 
     stages {

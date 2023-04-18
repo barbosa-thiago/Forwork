@@ -33,7 +33,6 @@ pipeline {
                             --comment "IP config" \
                             --parameters commands=ls ~/ \
                             --output text
-                        ssh ${FORWORK_USER}@${FORWORK_HOST} 'java -jar ~/forwork.jar'
                     '''
                 }
             }

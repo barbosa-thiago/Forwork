@@ -28,7 +28,7 @@ pipeline {
                         aws s3 cp target/forwork.jar s3://${S3_BUCKET}
                         aws s3 cp s3://${S3_BUCKET}/forwork.jar ${FORWORK_USER}@${FORWORK_HOST}:~/
                         aws ssm send-command \
-                            --instance-ids "instance-ID" \
+                            --instance-ids ${EC2_ID}" \
                             --document-name "AWS-RunShellScript" \
                             --comment "IP config" \
                             --parameters commands=ls ~/ \

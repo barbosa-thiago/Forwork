@@ -25,7 +25,7 @@ pipeline {
                         export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
                         export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
                         aws s3 cp target/forwork.jar s3://${S3_BUCKET}
-                        scp target/forwork.jar ${FORWORK_USER}@${FORWORK_HOST}:~/
+                        aws s3 cp s3://${S3_BUCKET}/forwork.jar ${FORWORK_USER}@${FORWORK_HOST}:~/
                         ssh ${FORWORK_USER}@${FORWORK_HOST} 'java -jar ~/forwork.jar'
                     '''
                 }

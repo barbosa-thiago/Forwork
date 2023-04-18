@@ -31,6 +31,7 @@ pipeline {
                             --instance-ids ${EC2_ID} \
                             --document-name "AWS-RunShellScript" \
                             --comment "IP config" \
+                            --region ${AWS_REGION} \
                             --parameters commands=ls \
                             --output text
                     '''
